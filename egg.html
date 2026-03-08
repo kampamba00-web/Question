@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Easter Scan</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    text-align:center;
+    height:100vh;
+    margin:0;
+
+    /* gradient background */
+    background: linear-gradient(135deg,#ffecd2,#fcb69f);
+    overflow:hidden;
+}
+
+/* floating eggs */
+
+.egg{
+    position:absolute;
+    font-size:30px;
+    animation: float 10s infinite linear;
+}
+
+@keyframes float{
+    from{
+        transform: translateY(100vh);
+    }
+    to{
+        transform: translateY(-100px);
+    }
+}
+
+/* center card */
+
+.card{
+    background:white;
+    padding:50px;
+    border-radius:20px;
+    width:500px;
+    margin:auto;
+    margin-top:150px;
+
+    box-shadow:0px 10px 25px rgba(0,0,0,0.2);
+}
+
+#text{
+    font-size:28px;
+    margin-bottom:30px;
+}
+
+button{
+    font-size:20px;
+    padding:12px 25px;
+    margin:10px;
+    cursor:pointer;
+    border:none;
+    border-radius:10px;
+}
+
+#yes{
+    background:#7ed957;
+}
+
+#no{
+    background:#ff6b6b;
+    position:absolute;
+}
+
+</style>
+
+<script>
+
+let messages = [
+"Scanning for the best Easter egg...",
+"Analyzing candidates...",
+"Checking personality...",
+"Checking vibes...",
+"Top result found:",
+"Alycia...",
+"Alycia Tererai...",
+"Alycia Tererai Zoey...",
+"Alycia Tererai Zoey Bakacheza 🐣"
+]
+
+let i = 0
+
+function nextText(){
+
+    if(i < messages.length){
+        document.getElementById("text").innerHTML = messages[i]
+        i++
+    }
+    else{
+        document.getElementById("text").innerHTML =
+        "So Alycia Tererai Zoey Bakacheza... will you be my Easter egg?"
+
+        document.getElementById("buttons").style.display="block"
+        clearInterval(loop)
+    }
+}
+
+function yes(){
+    document.body.innerHTML =
+    "<h1 style='margin-top:200px'>🐣 LET'S GOOO 🐣</h1><p>Easter just got better.</p>"
+}
+
+function move(){
+    let btn = document.getElementById("no")
+
+    let x = Math.random()*window.innerWidth
+    let y = Math.random()*window.innerHeight
+
+    btn.style.left = x+"px"
+    btn.style.top = y+"px"
+}
+
+let loop = setInterval(nextText,1500)
+
+</script>
+
+</head>
+
+<body>
+
+<!-- floating eggs -->
+
+<div class="egg" style="left:10%">🥚</div>
+<div class="egg" style="left:25%">🥚</div>
+<div class="egg" style="left:40%">🥚</div>
+<div class="egg" style="left:60%">🥚</div>
+<div class="egg" style="left:80%">🥚</div>
+
+<div class="card">
+
+<div id="text">Initializing Easter System...</div>
+
+<div id="buttons" style="display:none;">
+<button id="yes" onclick="yes()">YES 🐣</button>
+<button id="no" onmouseover="move()">No</button>
+</div>
+
+</div>
+
+</body>
+</html>
